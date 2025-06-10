@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emanuil Radoslavov - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 11in;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .profile-text {
+            text-align: justify;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid #e9ecef;
+            position: relative;
+        }
+
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 9px;
+            height: 9px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .job-title, .degree {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .company, .institution {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .skills-list {
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .language-name {
+            font-weight: 500;
+        }
+
+        .language-level {
+            font-size: 0.85em;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .achievements-list {
+            list-style: none;
+        }
+
+        .achievements-list li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+        }
+
+        .achievements-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8em;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Emanuil Radoslavov</h1>
+                <p class="title">Aspiring Business Student & Young Entrepreneur</p>
+                <div class="contact-info">
+                    <div class="contact-item">📧 emo.radoslavov@gmail.com</div>
+                    <div class="contact-item">📱 +359 886 909 277</div>
+                    <div class="contact-item">📍 Sofia, Bulgaria</div>
+                    <div class="contact-item">🎂 Born: October 16, 2005</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">Personal Statement</h2>
+                <p class="profile-text">
+                    An ambitious 19-year-old entrepreneur with hands-on experience in business operations, customer service, and market analysis. Successfully operating a clothing brand after learning from previous business challenges, while gaining international sales experience in immigration consulting. Demonstrates strong leadership, problem-solving abilities, and multilingual communication skills. Seeking to further develop business knowledge and strategic thinking through higher education while contributing diverse practical experience to the university community.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Professional & Entrepreneurial Experience</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Sales Representative - Immigration Services</h3>
+                    <p class="company">Quantera Consulting</p>
+                    <p class="date">May 2024 - October 2024</p>
+                    <p class="description">
+                        • Provided comprehensive immigration consulting services for clients worldwide seeking Canadian residency and citizenship<br>
+                        • Developed expertise in Canadian immigration law, visa categories, and application processes<br>
+                        • Built international client relationships through effective communication and cultural sensitivity<br>
+                        • Achieved consistent sales targets while maintaining high client satisfaction and ethical service standards
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Brand Founder & Operations Manager</h3>
+                    <p class="company">Clothing Brand (Self-Employed)</p>
+                    <p class="date">2023 - Present</p>
+                    <p class="description">
+                        • Successfully launched and rebranded clothing business after learning from initial market challenges, demonstrating resilience and adaptability<br>
+                        • Currently operating profitably through improved product positioning, customer targeting, and operational efficiency<br>
+                        • Manage end-to-end operations including production coordination, digital marketing, and direct customer service<br>
+                        • Applied lessons from previous business experience to create sustainable growth and positive cash flow
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Coffee Vending Machine Operations</h3>
+                    <p class="company">Self-Employed Partnership</p>
+                    <p class="date">2023 - 2024</p>
+                    <p class="description">
+                        • Developed market research and location analysis skills through strategic vending machine placement negotiations<br>
+                        • Gained valuable experience in partnership management, financial reporting, and operational planning<br>
+                        • Built professional relationships with property owners and facility managers across Sofia<br>
+                        • Project concluded due to partner's personal circumstances, providing insights into business partnership dynamics
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Barista</h3>
+                    <p class="company">Nedelya "The Cake Company"</p>
+                    <p class="date">June 2023 - October 2023 & January 2025 - June 2025</p>
+                    <p class="description">
+                        • Delivered exceptional customer service across two employment periods, demonstrating reliability and strong work ethic<br>
+                        • Mastered beverage preparation techniques while maintaining high quality and efficiency standards<br>
+                        • Developed advanced multitasking abilities and teamwork skills in fast-paced hospitality environment<br>
+                        • Maintained rigorous hygiene and safety standards while building positive customer relationships
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <h3 class="degree">High School Diploma - Business & Entrepreneurship Profile</h3>
+                    <p class="institution">Britanica Park School, Sofia</p>
+                    <p class="date">September 2021 - June 2024</p>
+                    <p class="description">
+                        Specialized in Business and Entrepreneurship curriculum, developing strong foundation in business principles, market analysis, and entrepreneurial thinking. Graduated with comprehensive knowledge in both academic subjects and practical business applications.
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3 class="degree">English Language Specialization</h3>
+                    <p class="institution">Prof. Ivan Apostolov English Language School, Sofia</p>
+                    <p class="date">September 2019 - July 2020</p>
+                    <p class="description">
+                        Intensive English language program that developed advanced proficiency across all language skills (C1 level), providing strong foundation for international communication and academic pursuits.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Skills & Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Business & Entrepreneurship</h4>
+                        <p class="skills-list">Market Research, Business Operations, Financial Management, Negotiation, Strategic Planning, Customer Relationship Management</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Digital & Technical</h4>
+                        <p class="skills-list">Microsoft Office Suite (Word, Excel, PowerPoint), Digital Marketing, Social Media Management, Data Analysis, Financial Reporting</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Personal & Professional</h4>
+                        <p class="skills-list">Leadership, Communication, Time Management, Problem-Solving, Adaptability, Cross-Cultural Awareness, Team Collaboration</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="languages-grid">
+                    <div class="language-item">
+                        <span class="language-name">Bulgarian</span>
+                        <span class="language-level">Native</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">English</span>
+                        <span class="language-level">Advanced (C1)</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">Spanish</span>
+                        <span class="language-level">Basic (A1)</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Additional Qualifications & Interests</h2>
+                <ul class="achievements-list">
+                    <li><strong>Driving Licenses:</strong> Category AM and B - demonstrating responsibility and independence</li>
+                    <li><strong>Athletic Pursuits:</strong> Active in gym training, snowboarding, football, and hiking - showing discipline, teamwork, and resilience</li>
+                    <li><strong>Self-Developed Ideology:</strong> Committed to continuous personal growth through developing independent thinking and innovative problem-solving approaches</li>
+                    <li><strong>Business Passion:</strong> Deep interest in business field with practical application through entrepreneurial ventures</li>
+                    <li><strong>Multilingual Development:</strong> Currently expanding language skills with ongoing Spanish studies</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
